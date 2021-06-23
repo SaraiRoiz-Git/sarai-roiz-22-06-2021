@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { HashRouter, Route } from 'react-router-dom';
 
 import './App.css';
-import AppNavbar from './component/AppNavbar';
-import Home from './pages/home';
-import Favorits from './pages/Favorits';
+import AppNavbar from './component/AppNavbar/AppNavbar';
+import Home from './pages/Home/Home';
+import Favorits from './pages/Favorits/Favorits';
 
 function App() {
 
