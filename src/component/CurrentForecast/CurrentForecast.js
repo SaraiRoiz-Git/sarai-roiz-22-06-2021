@@ -1,76 +1,53 @@
 
-import React, { Component } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import './CurrentForecast.css'
-export class CurrentForecast extends Component {
-    
-    localplace = {
-        "Version": 1,
-        "Key": "215793",
-        "Type": "City",
-        "Rank": 95,
-        "LocalizedName": "Tel-aviv Port",
-        "Country": {
-            "ID": "IL",
-            "LocalizedName": "Israel"
-        },
-        "AdministrativeArea": {
-            "ID": "TA",
-            "LocalizedName": "Tel Aviv"
-        }
-    }
-    currForecast =
-        {
-            "LocalObservationDateTime": "2021-06-23T10:30:00+03:00",
-            "EpochTime": 1624433400,
-            "WeatherText": "Mostly sunny",
-            "WeatherIcon": 2,
-            "HasPrecipitation": false,
-            "PrecipitationType": null,
-            "IsDayTime": true,
-            "Temperature": {
-                "Metric": {
-                    "Value": 28.3,
-                    "Unit": "C",
-                    "UnitType": 17
-                },
-                "Imperial": {
-                    "Value": 83.0,
-                    "Unit": "F",
-                    "UnitType": 18
-                }
-            },
-            "MobileLink": "http://m.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
-            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
-        }
-    render() {
-        return (
-            <Row className="location head-row">
-                <Col>
-                    <div className="location-head">
-                        <div className="curr-country">
-                            {this.localplace.Country.LocalizedName}/
+import {
+    getCurrentWeather,
+    getFiveDaysWeatherByLocation,
+    getTodayWeatherByLocation
+}
+    from "../../redux/actions/action";
+
+function CurrentForecast() {
+    const dispatch = useDispatch();
+    const location = useSelector(state => state.location);
+    const localPlace = useSelector(state => state.currLocation);
+    const currForecast = useSelector(state => state.currForecast)[0];
+
+    useEffect(() => {
+        let locationKey = localPlace ? localPlace.Key : location;
+        dispatch(getTodayWeatherByLocation(locationKey));
+    }, []);
+
+    console.log("ddddddd", currForecast)
+    return (
+        <Row className="location head-row">
+            <Col>
+                <div className="location-head">
+                    <div className="curr-country">
+                        {localPlace ? localPlace.Country.LocalizedName : null}/
                     </div>
-                        <div className="curr-city">
-                            {this.localplace.AdministrativeArea.LocalizedName}-
+                    <div className="curr-city">
+                        {localPlace ? localPlace.AdministrativeArea.LocalizedName : null}-
                     </div>
-                        <div className="curr-tpm">
-                            {this.currForecast.Temperature.Metric.Value}°
-                         {this.currForecast.Temperature.Metric.Unit}
-                        </div>
+                    <div className="curr-tpm">
+                        {currForecast ? currForecast.Temperature.Metric.Value : "--"}°
+                         {currForecast ? currForecast.Temperature.Metric.Unit : ""}
                     </div>
-                </Col>
-                <Col>
-                    <div>
-                        <Button>🤍</Button>Add to favorits
+                </div>
+            </Col>
+            <Col>
+                <div>
+                    <Button>🤍</Button>Add to favorits
                     </div>
-                </Col>
+            </Col>
 
 
-            </Row>
-        )
-    }
+        </Row>
+    )
+
 }
 
 

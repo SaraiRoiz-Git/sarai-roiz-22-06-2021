@@ -1,8 +1,8 @@
 import { API_KEY, URL } from '../../constants';
-import { DAILY_FORCAST, FIVE_DAYS_FORECAST } from './actionTypes';
+import {AUTOCOMPLITE_PLACES,NOW_FORCAST, FIVE_DAYS_FORECAST } from './actionTypes';
 
 /*API actions*/
-export const getAutoCompliteData = (input) => {
+export const getAutoCompliteData = (input) => dipatch=> {
     fetch(`${URL}locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${input}`).
         then(res => res.json()).
         then(data => dipatch({
@@ -21,7 +21,7 @@ export const getFiveDaysWeatherByLocation = (location) => dipatch => {
 };
 
 export const getTodayWeatherByLocation = (location) => dipatch => {
-    fetch(`${URL}currentconditions/v1/${location}?apikey=${API_KEY}?metric=true`)
+    fetch(`${URL}currentconditions/v1/${location}?apikey=${API_KEY}`)
         .then(res => res.json())
         .then(data => dipatch({
             type: NOW_FORCAST,

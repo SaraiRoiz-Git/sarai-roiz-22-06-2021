@@ -2,7 +2,7 @@
 /*update data from API*/
 export const AUTOCOMPLITE_PLACES = 'AUTOCOMPLITE_PLACES';
 export const NOW_FORCAST = 'NOW_FORCAST'
-export const FIVE_DAYS_FORCAST = 'FIVE_DAYS_FORCAST';
+export const FIVE_DAYS_FORECAST = 'FIVE_DAYS_FORECAST';
 
 /**/
 

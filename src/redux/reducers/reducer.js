@@ -1,12 +1,14 @@
-import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORCAST, REMOVE_FROM_FAVORITS } from '../actions/actionTypes';
-import { TLV } from '../../constants';
+import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS } from '../actions/actionTypes';
+import { CITY, TLV } from '../../constants';
 
 const initialState = {
-  location: { TLV },
+  location: TLV ,
+  locationName: CITY ,
   favorites: []
 };
 
 const weatherData = (state = initialState, action) => {
+  console.log(state);
   switch (action.type) {
     case AUTOCOMPLITE_PLACES:
       return {
@@ -17,10 +19,10 @@ const weatherData = (state = initialState, action) => {
     case NOW_FORCAST:
       return {
         ...state,
-        "daily-forcast": action.payload
+        currForecast: action.payload
       };
 
-    case FIVE_DAYS_FORCAST:
+    case FIVE_DAYS_FORECAST:
       return {
         ...state,
         fiveDaysForcast: action.payload
@@ -43,13 +45,6 @@ const weatherData = (state = initialState, action) => {
         ...state,
         fiveDaysForcast: action.payload
       };
-
-    case FIVE_DAYS_FORCAST:
-      return {
-        ...state,
-        fiveDaysForcast: action.payload
-      };
-
     default:
       return state;
   }
