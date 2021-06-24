@@ -2,18 +2,17 @@ import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIV
 import { CITY, TLV } from '../../constants';
 
 const initialState = {
-  location: TLV ,
-  locationName: CITY ,
-  favorites: []
+  location: TLV,
+  locationName: CITY,
+  favoriteList: []
 };
 
 const weatherData = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case AUTOCOMPLITE_PLACES:
       return {
         ...state,
-        locations: action.payload
+        currLocation: action.payload
       };
 
     case NOW_FORCAST:
@@ -35,15 +34,23 @@ const weatherData = (state = initialState, action) => {
       };
 
     case ADD_TO_FAVORITS:
-      return {
-        ...state,
-        fiveDaysForcast: action.payload
-      };
+      console.log("action",action)
+      console.log("state",state)
+      if (!state.favoriteList.find(obj => obj.localPlace.LocalizedName == action.payload.localPlace.LocalizedName)) {
+        state.favoriteList.push(action.payload)
+      }
+      console.log("action",action)
+        console.log("state",state)
+        return {
+          ...state
+        }
+      ;
 
     case REMOVE_FROM_FAVORITS:
+      const list = state.favoriteList.filter(obj => obj.localPlace.LocalizedName != action.payload.localPlace.LocalizedName)
       return {
         ...state,
-        fiveDaysForcast: action.payload
+        favoriteList: list
       };
     default:
       return state;

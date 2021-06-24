@@ -1,29 +1,26 @@
 import React, { Component } from 'react'
+import { URL } from '../../constants';
 import moment from 'moment';
 import { getIconUrl } from '../../utilities.js'
 import './DailyForecasts.css'
-class DailyForecasts extends Component {
-    constructor(props) {
-        super(props)
-    }
+function DailyForecasts(props) {
 
-    getDay = (fullDate) => {
+    const getDay = (fullDate) => {
         const date = moment(fullDate).format('dddd');
         return date
     }
 
-    getDate = (fullDate) => {
+    const getDate = (fullDate) => {
         const date = moment(fullDate).format('L');
         return date
     }
 
-
-    render() {
-        const data = this.props.data;
+    const data = props.data;
+    if (data) {
         return (
             <div className="daily">
-                <div className="day-of-the-week">{this.getDay(data.Date)}</div>
-                <div className="date">({this.getDate(data.Date)})</div>
+                <div className="day-of-the-week">{getDay(data.Date)}</div>
+                <div className="date">({getDate(data.Date)})</div>
                 <div className="daily-card">
                     <img className="weather-img" src={getIconUrl(data.Day.Icon)} />
                     <div className="temperature">
@@ -34,6 +31,7 @@ class DailyForecasts extends Component {
 
         )
     }
+    return
 }
 
 export default DailyForecasts
