@@ -181,7 +181,6 @@ class FiveDaysForcast extends Component {
 
     render() {
         const cards = this.createDalyCard()
-        console.log("card", cards);
         return (
             <div>
                 <h3>{this.fiveDaysForecast.Headline.Text}</h3>

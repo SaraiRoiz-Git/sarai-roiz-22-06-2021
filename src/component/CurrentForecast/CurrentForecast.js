@@ -4,6 +4,7 @@ import { Button, Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import './CurrentForecast.css'
 export class CurrentForecast extends Component {
+    
     localplace = {
         "Version": 1,
         "Key": "215793",

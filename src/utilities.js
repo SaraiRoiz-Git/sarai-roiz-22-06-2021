@@ -6,7 +6,6 @@ const editeImgNumber = (num) => {
 }
 
 export const  getIconUrl = (iconNum) => {
-    console.log( `${editeImgNumber(iconNum)}-s.png`)
     return `https://developer.accuweather.com/sites/default/files/${editeImgNumber(iconNum)}-s.png`
 }
 
