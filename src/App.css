@@ -1,6 +1,11 @@
 .App {
   box-sizing: border-box;
   text-align: center;
-  background-image: 'C:\sarai\react projects\weather-app\src\img\background.jpg';
+ 
 }
 
+.background{
+  background:  url('./img/background.jpg') no-repeat center center fixed ;
+  background-size: cover;
+  height: 100vh;
+}

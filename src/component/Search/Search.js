@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, ListGroup } from 'react-bootstrap'
-
+import './Search.css'
  class Search extends Component {
    
    
@@ -21,7 +21,7 @@ import { Form, ListGroup } from 'react-bootstrap'
         return (
 
             <Form.Group>
-                <Form.Control
+                <Form.Control className="city-search"
                     type="text"
                     value={this.props.search}
                     placeholder={this.props.placeHolder}

@@ -12,7 +12,7 @@ export const getAutoCompliteData = (input) => {
 }
 
 export const getFiveDaysWeatherByLocation = (location) => dipatch => {
-    fetch(`${URL}forecasts/v1/daily/5day/${location}?apikey=${API_KEY}`)
+    fetch(`${URL}forecasts/v1/daily/5day/${location}?apikey=${API_KEY}?metric=true`)
         .then(res => res.json())
         .then(data => dipatch({
             type: FIVE_DAYS_FORECAST,
@@ -21,7 +21,7 @@ export const getFiveDaysWeatherByLocation = (location) => dipatch => {
 };
 
 export const getTodayWeatherByLocation = (location) => dipatch => {
-    fetch(`${URL}currentconditions/v1/${location}?apikey=${API_KEY}`)
+    fetch(`${URL}currentconditions/v1/${location}?apikey=${API_KEY}?metric=true`)
         .then(res => res.json())
         .then(data => dipatch({
             type: NOW_FORCAST,

@@ -1,0 +1,8 @@
+.head-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-head{
+    display: flex;
+}

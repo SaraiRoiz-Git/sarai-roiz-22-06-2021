@@ -8,17 +8,16 @@ import './Home.css'
 
 class Home extends Component {
     render() {
-
         return (
-            <Container>
+            <div className="background">
+             <Container>
                 <Search></Search>
                 <div className="forecast-container">
                     <CurrentForecast></CurrentForecast>
-
-
                     <FiveDaysForcast> </FiveDaysForcast>
                 </div>
             </Container>
+            </div>
         )
     }
 }
