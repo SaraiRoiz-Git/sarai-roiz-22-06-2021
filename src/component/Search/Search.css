@@ -1,3 +1,10 @@
  .city-search{
+    
     margin-top:  2rem ;
 } 
+
+.search-items{
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}

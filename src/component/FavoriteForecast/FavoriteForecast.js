@@ -16,11 +16,10 @@ function FavoriteForecast(props) {
     const removeItem = () => {
         dispatch(removeItemFromFavorits(favorite))
     }
-    // console.log("currForecast", currForecast)
-    // console.log("localPlace", localPlace)
+    console.log("currForecast", currForecast)
+     console.log("localPlace", localPlace)
 
     const goToHomepage = () => {
-        console.log("goToHomepage")
         dispatch(setDefultLocation(localPlace))
         window.location.href = '#/'
     }
@@ -35,10 +34,14 @@ function FavoriteForecast(props) {
                         <div className="curr-city">
                             {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName} <b> -  </b> 
                         </div>
-                        <div className="curr-tpm">
+                        {/* <img className="weather-img" src={getIconUrl(currForecast.WeatherIcon)} />*/}
+                        <div className="curr-tpm"> 
                             {currForecast ? currForecast[0].Temperature.Metric.Value : '--'}°
                             {currForecast ? currForecast[0].Temperature.Metric.Unit : null}
                         </div>
+                    </div>
+                    <div>
+                        
                     </div>
                 </Col>
                 <Col >
