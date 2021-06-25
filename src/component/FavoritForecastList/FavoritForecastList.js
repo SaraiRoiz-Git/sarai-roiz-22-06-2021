@@ -14,7 +14,7 @@ function FavoritForecastList() {
     return "No items on your list"
   }
   return (
-    <div>
+    <div className="list">
       {createFavoritsCard()}
     </div>
   )
