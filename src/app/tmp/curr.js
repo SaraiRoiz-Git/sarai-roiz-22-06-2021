@@ -1,4 +1,4 @@
-[
+const currentW = [
     {
        "LocalObservationDateTime":"2021-06-23T10:30:00+03:00",
        "EpochTime":1624433400,
@@ -23,3 +23,5 @@
        "Link":"http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
     }
  ]
+
+ export default currentW;

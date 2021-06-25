@@ -8,7 +8,8 @@ import {
     getAutoCompliteData,
     getCurrentWeather,
     getFiveDaysWeatherByLocation,
-    getTodayWeatherByLocation
+    getTodayWeatherByLocation,
+    setDefultLocation
 }
     from "../../redux/actions/action";
 
@@ -16,31 +17,40 @@ function CurrentForecast() {
     const dispatch = useDispatch();
     const location = useSelector(state => state.location);
     const locationName = useSelector(state => state.locationName);
+    const locationState = useSelector(state => state.locationState);
     const localPlace = useSelector(state => state.currLocation);
     const currForecast = useSelector(state => state.currForecast);
 
     useEffect(() => {
-        let locationKey = localPlace ? localPlace.Key : location;
-        let localName = localPlace ? localPlace.LocalizedName : locationName;
+       // console.log("localPlace", localPlace)
+        console.log("location", location)
+        console.log("locationName", locationName)
+        let locationKey = localPlace ? localPlace[0].Key : location;
+        let localName = localPlace ? localPlace[0].LocalizedName : locationName;
+        console.log("locationKey", locationKey)
+        console.log("localName", localName)
         dispatch(getAutoCompliteData(locationName));
+        //dispatch(setDefultLocation(locationKey));
         dispatch(getTodayWeatherByLocation(locationKey));
+
+        
     }, []);
 
     const addToFavoritsList = () => {
         dispatch(addToFavorits({ localPlace: localPlace, currForecast: currForecast }))
     }
     
-    // console.log("localPlace", localPlace)
+    console.log("localPlace", localPlace)
      console.log('currForecast!!', currForecast)
     return (
         <Row className="location head-row">
             <Col>
                 <div className="location-head">
                     <div className="curr-country">
-                        {localPlace ? localPlace[0].Country.LocalizedName : null}/
+                        {localPlace ? localPlace[0].Country.LocalizedName : locationState}
                     </div>
                     <div className="curr-city">
-                        {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : null}-
+                        {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName}-
                     </div>
                     <div className="curr-tpm">
                         {currForecast ? currForecast[0].Temperature.Metric.Value : "--"}°

@@ -1,4 +1,4 @@
-{
+const fivedays = {
     "Headline": {
        "EffectiveDate": "2021-06-26T08:00:00+03:00",
        "EffectiveEpochDate": 1624683600,
@@ -168,3 +168,5 @@
        }
     ]
  }
+
+ export default fivedays;

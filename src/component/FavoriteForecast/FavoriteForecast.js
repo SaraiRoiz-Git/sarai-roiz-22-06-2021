@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
-import { addToFavorits, removeItemFromFavorits } from '../../redux/actions/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToFavorits, removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
 import { getIconUrl } from '../../utilities'
 import './FavoriteForecast.css'
 
@@ -10,22 +10,30 @@ function FavoriteForecast(props) {
     const favorite = props.favorite
     const currForecast = favorite.currForecast;
     const localPlace = favorite.localPlace;
+    const locationName = useSelector(state => state.locationName);
+    const locationState = useSelector(state => state.locationState);
 
     const removeItem = () => {
         dispatch(removeItemFromFavorits(favorite))
     }
-    console.log("currForecast", currForecast)
-    console.log("localPlace", localPlace)
+    // console.log("currForecast", currForecast)
+    // console.log("localPlace", localPlace)
+
+    const goToHomepage = () => {
+        console.log("goToHomepage")
+        dispatch(setDefultLocation(localPlace))
+        window.location.href = '#/'
+    }
     return (
         <div className="favorit-card">
             <Row className="location head-row">
                 <Col>
-                    <div className="location-head">
+                    <div className="location-head" onClick={goToHomepage}>
                         <div className="curr-country">
-                            {localPlace ? localPlace[0].Country.LocalizedName : null}/
-                    </div>
+                            {localPlace ? localPlace[0].Country.LocalizedName : locationState}/
+                             </div>
                         <div className="curr-city">
-                            {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : null}
+                            {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName}
                         </div>
                         <img className="weather-img" src={getIconUrl(currForecast.WeatherIcon)} />
                         <div className="curr-tpm">

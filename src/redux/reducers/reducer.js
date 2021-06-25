@@ -1,18 +1,20 @@
-import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS } from '../actions/actionTypes';
-import { CITY, TLV } from '../../constants';
+import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS, ON_REQUEST_FAILED, CLEAR_ERROR } from '../actions/actionTypes';
+import { CITY, COUNTRY, TLV } from '../../constants';
 
 const initialState = {
   location: TLV,
   locationName: CITY,
+  locationState: COUNTRY,
   favoriteList: []
 };
 
 const weatherData = (state = initialState, action) => {
   switch (action.type) {
     case AUTOCOMPLITE_PLACES:
+      console.log('action', action)
       return {
         ...state,
-        currLocation: action.payload
+        locationsList: action.payload
       };
 
     case NOW_FORCAST:
@@ -28,23 +30,26 @@ const weatherData = (state = initialState, action) => {
       };
 
     case CHANGE_LOCATION:
+      console.log('in CHANGE_LOCATION')
+      console.log(action.payload)
+
       return {
         ...state,
-        location: action.payload
+        localPlace: action.payload
       };
 
     case ADD_TO_FAVORITS:
-      console.log("action",action)
-      console.log("state",state)
+      console.log("action", action)
+      console.log("state", state)
       if (!state.favoriteList.find(obj => obj.localPlace.LocalizedName == action.payload.localPlace.LocalizedName)) {
         state.favoriteList.push(action.payload)
       }
-      console.log("action",action)
-        console.log("state",state)
-        return {
-          ...state
-        }
-      ;
+      // console.log("action", action)
+      // console.log("state", state)
+      return {
+        ...state
+      }
+        ;
 
     case REMOVE_FROM_FAVORITS:
       const list = state.favoriteList.filter(obj => obj.localPlace.LocalizedName != action.payload.localPlace.LocalizedName)
@@ -52,6 +57,19 @@ const weatherData = (state = initialState, action) => {
         ...state,
         favoriteList: list
       };
+
+    case ON_REQUEST_FAILED:
+      return {
+        ...state,
+        error: true
+      };
+
+      case CLEAR_ERROR:
+        return {
+          ...state,
+          error: false
+        };
+
     default:
       return state;
   }
