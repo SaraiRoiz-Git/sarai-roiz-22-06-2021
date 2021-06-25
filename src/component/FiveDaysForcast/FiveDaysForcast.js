@@ -27,7 +27,7 @@ function FiveDaysForcast() {
     const cards = createDalyCard()
     return (
         <div>
-            <h3>{fiveDaysForecast ? fiveDaysForecast.Headline.Text : null}</h3>
+            <h3 className="head-line">{fiveDaysForecast ? fiveDaysForecast.Headline.Text : null}</h3>
             <div className="five-days-row">
                 {cards}
             </div>

@@ -47,8 +47,9 @@ function CurrentForecast() {
             <Col>
                 <div className="location-head">
                     <div className="curr-country">
-                        {localPlace ? localPlace[0].Country.LocalizedName : locationState}
+                        {localPlace ? localPlace[0].Country.LocalizedName : locationState}, 
                     </div>
+                    <div></div>
                     <div className="curr-city">
                         {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName}-
                     </div>
@@ -58,9 +59,11 @@ function CurrentForecast() {
                     </div>
                 </div>
             </Col>
-            <Col>
+            <Col  className="add-to-favorits" lg="6"  sm="12">
                 <div>
-                    <button onClick={addToFavoritsList}>🤍</button>Add to favorits
+                    <button onClick={addToFavoritsList}>🤍</button>
+                    <span className="btn-task">Add to favorits
+                        </span>
                     </div>
             </Col>
 

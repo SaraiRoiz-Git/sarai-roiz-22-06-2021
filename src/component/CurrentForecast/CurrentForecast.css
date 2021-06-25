@@ -5,4 +5,32 @@
 
 .location-head{
     display: flex;
+    justify-content: center ;
 }
+
+.add-to-favorits{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.location-head{
+    font-size: 1.5rem;
+    background-color: rgba(10,34,57,0.4);
+    padding: 1rem;
+    border-radius: 0.5rem; 
+    color: white;
+}
+
+button{
+    background-color: rgb(10,34,57) ;
+    border-radius: 0.5rem;
+}
+
+.btn-task{
+   
+    font-weight: 500;
+    padding-left: 1rem;
+}
+

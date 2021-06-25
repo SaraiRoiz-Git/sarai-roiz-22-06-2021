@@ -1,5 +1,23 @@
 .daily-card{
-    border: 1px solid grey;
-    width: 100px;
-    height: 100px;
+    background-color: rgba(10,34,57,0.4);
+    padding: 2rem 1rem;
+    border-radius: 0.3rem;
+    margin: 0.5rem 2rem 2rem 2rem;
+}
+
+.weather-img{
+    padding-bottom: 2rem;
+}
+
+.day-of-the-week{
+    color: rgb(10,34,57);
+}
+
+.date{
+  
+    color: white;
+}
+
+.temperature{
+    color: white;
 }
