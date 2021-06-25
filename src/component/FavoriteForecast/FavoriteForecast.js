@@ -27,24 +27,23 @@ function FavoriteForecast(props) {
     return (
         <div className="favorit-card">
             <Row className="location head-row">
-                <Col>
-                    <div className="location-head" onClick={goToHomepage}>
+                <Col lg="6" sm="10">
+                    <div className="location-favorits" onClick={goToHomepage}>
                         <div className="curr-country">
                             {localPlace ? localPlace[0].Country.LocalizedName : locationState}/
                              </div>
                         <div className="curr-city">
-                            {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName}
+                            {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName} <b> -  </b> 
                         </div>
-                        <img className="weather-img" src={getIconUrl(currForecast.WeatherIcon)} />
                         <div className="curr-tpm">
                             {currForecast ? currForecast[0].Temperature.Metric.Value : '--'}°
                             {currForecast ? currForecast[0].Temperature.Metric.Unit : null}
                         </div>
                     </div>
                 </Col>
-                <Col>
-                    <div>
-                        <button onClick={removeItem}>-</button>remove
+                <Col >
+                    <div className="remove-element">
+                        <button className="btn-remove" onClick={removeItem}><b>-</b></button>
                     </div>
                 </Col>
             </Row>

@@ -1,4 +1,30 @@
-.favorit-card{
-    height: 40px;
-    border: 1px solid black;
+
+
+.location-favorits{
+    display: flex;
+    background-color: rgba(255,255,255,0.4);;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+.head-row{
+    align-items: center;
+}
+.remove-element{
+    display: flex;
+    align-items: center;
+}
+.location-favorits{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.btn-remove{
+    padding:    0.7rem 1rem;
+}
+
+.remove-element{
+    color: white ;
+    font-weight: 400;
+    padding-left: 1rem;
 }
