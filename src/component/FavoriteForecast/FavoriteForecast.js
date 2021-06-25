@@ -30,10 +30,10 @@ function FavoriteForecast(props) {
                 <Col lg="6" sm="10">
                     <div className="location-favorits" onClick={goToHomepage}>
                         <div className="curr-country">
-                            {localPlace ? localPlace[0].Country.LocalizedName : locationState}/
+                            {localPlace ? localPlace.Country.LocalizedName : locationState}/
                              </div>
                         <div className="curr-city">
-                            {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName} <b> -  </b> 
+                            {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName} <b> -  </b> 
                         </div>
                         <div className="curr-tpm">
                             {currForecast ? currForecast[0].Temperature.Metric.Value : '--'}°

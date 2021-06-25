@@ -18,15 +18,15 @@ function CurrentForecast() {
     const location = useSelector(state => state.location);
     const locationName = useSelector(state => state.locationName);
     const locationState = useSelector(state => state.locationState);
-    const localPlace = useSelector(state => state.currLocation);
+    const localPlace = useSelector(state => state.localPlace);
     const currForecast = useSelector(state => state.currForecast);
 
     useEffect(() => {
        // console.log("localPlace", localPlace)
         console.log("location", location)
         console.log("locationName", locationName)
-        let locationKey = localPlace ? localPlace[0].Key : location;
-        let localName = localPlace ? localPlace[0].LocalizedName : locationName;
+        let locationKey = localPlace ? localPlace.Key : location;
+        let localName = localPlace ? localPlace.LocalizedName : locationName;
         console.log("locationKey", locationKey)
         console.log("localName", localName)
         dispatch(getAutoCompliteData(locationName));
@@ -47,11 +47,11 @@ function CurrentForecast() {
             <Col>
                 <div className="location-head">
                     <div className="curr-country">
-                        {localPlace ? localPlace[0].Country.LocalizedName : locationState}, 
+                        {localPlace ? localPlace.Country.LocalizedName : locationState}, 
                     </div>
                     <div></div>
                     <div className="curr-city">
-                        {localPlace ? localPlace[0].AdministrativeArea.LocalizedName : locationName}-
+                        {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName}-
                     </div>
                     <div className="curr-tpm">
                         {currForecast ? currForecast[0].Temperature.Metric.Value : "--"}°

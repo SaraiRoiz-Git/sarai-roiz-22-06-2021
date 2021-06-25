@@ -7,15 +7,15 @@ import './FiveDaysForcast.css'
 function FiveDaysForcast() {
     const dispatch = useDispatch();
     const location = useSelector(state => state.location);
-    const localPlace = useSelector(state => state.currLocation);
+    const localPlace = useSelector(state => state.localPlace);
     const fiveDaysForecast = useSelector(state => state.fiveDaysForcast)
 
     useEffect(() => {
         console.log('in fivedays useeFFEFT')
-        let locationKey = localPlace ? localPlace[0].Key : location;
-       // console.log("location",location)
-       // console.log("localPlace",localPlace)
-         dispatch(getFiveDaysWeatherByLocation(locationKey))
+        let locationKey = localPlace ? localPlace.Key : location;
+        // console.log("location",location)
+        // console.log("localPlace",localPlace)
+        dispatch(getFiveDaysWeatherByLocation(locationKey))
     }, []);
     // console.log("localPlace", fiveDaysForecast)
     // console.log("fiveDaysForecast", fiveDaysForecast)

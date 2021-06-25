@@ -1,11 +1,12 @@
 import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS, ON_REQUEST_FAILED, CLEAR_ERROR } from '../actions/actionTypes';
-import { CITY, COUNTRY, TLV } from '../../constants';
+import { CITY, COUNTRY, LOCAL_PLAECE, TLV } from '../../constants';
 
 const initialState = {
-  location: TLV,
-  locationName: CITY,
-  locationState: COUNTRY,
-  favoriteList: []
+  // location: TLV,
+  // locationName: CITY,
+  // locationState: COUNTRY,
+  favoriteList: [],
+  localPlace:LOCAL_PLAECE
 };
 
 const weatherData = (state = initialState, action) => {
