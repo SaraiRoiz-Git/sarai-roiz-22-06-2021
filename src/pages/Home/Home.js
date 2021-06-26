@@ -13,10 +13,8 @@ function Home() {
 
     const dispatch = useDispatch()
     const error = useSelector(state => state.error);
-    console.log('error');
-    console.log(error);
 
-    const handleClose = () =>{
+    const handleClose = () => {
         console.log('in handleClose')
         dispatch(clearError())
     }
@@ -26,16 +24,13 @@ function Home() {
             <Container className="home-container">
                 <Search></Search>
                 <Modal show={error} onHide={handleClose}>
-            
                     <Modal.Header closeButton>
                         <Modal.Title>Error</Modal.Title>
                     </Modal.Header>
-
                     <Modal.Body>
                         <p>An error has occurred. Please try again later.</p>
                     </Modal.Body>
                 </Modal>
-
 
                 <div className="forecast-container">
                     <CurrentForecast></CurrentForecast>

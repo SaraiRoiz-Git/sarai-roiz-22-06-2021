@@ -1,9 +1,9 @@
-import React, { Component, useEffect } from 'react'
-import { Row } from 'react-bootstrap'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getFiveDaysWeatherByLocation } from '../../redux/actions/action';
 import DailyForecasts from '../DailyForecasts/DailyForecasts'
 import './FiveDaysForcast.css'
+
 function FiveDaysForcast() {
     const dispatch = useDispatch();
     const location = useSelector(state => state.location);
@@ -26,10 +26,8 @@ function FiveDaysForcast() {
             <div className="five-days-row">
                 {cards}
             </div>
-
         </div>
     )
-
 }
 
 export default FiveDaysForcast;

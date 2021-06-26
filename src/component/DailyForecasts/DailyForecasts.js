@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { URL } from '../../constants';
+import React from 'react'
 import moment from 'moment';
 import { getIconUrl } from '../../utilities.js'
 import './DailyForecasts.css'
+
 function DailyForecasts(props) {
 
     const getDay = (fullDate) => {
@@ -16,6 +16,7 @@ function DailyForecasts(props) {
     }
 
     const data = props.data;
+
     if (data) {
         return (
             <div className="daily">
@@ -28,7 +29,6 @@ function DailyForecasts(props) {
                     </div>
                 </div>
             </div>
-
         )
     }
     return

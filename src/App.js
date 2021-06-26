@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HashRouter, Route } from 'react-router-dom';
-
 import './App.css';
 import AppNavbar from './component/AppNavbar/AppNavbar';
 import Home from './pages/Home/Home';

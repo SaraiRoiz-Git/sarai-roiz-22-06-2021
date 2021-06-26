@@ -1,8 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import FavoritForecastList from "../../component/FavoritForecastList/FavoritForecastList" 
+import FavoritForecastList from "../../component/FavoritForecastList/FavoritForecastList"
 function Favorits() {
-
 
     return (
         <div className="background">
@@ -12,8 +11,6 @@ function Favorits() {
             </Container>
         </div>
     )
-
-
 }
 
 export default Favorits;

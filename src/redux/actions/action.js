@@ -1,14 +1,7 @@
 import { API_KEY, URL } from '../../constants';
 import { AUTOCOMPLITE_PLACES, NOW_FORCAST, FIVE_DAYS_FORECAST, ADD_TO_FAVORITS, REMOVE_FROM_FAVORITS, CHANGE_LOCATION,CLEAR_ERROR, ON_REQUEST_FAILED } from './actionTypes';
-import data from "../../app/tmp/Auto";
-import fivedays from '../../app/tmp/tmp-5';
-import currentW from '../../app/tmp/curr';
-/*API actions*/
-export const getAutoCompliteData = (input) => dipatch => {
-    // dipatch({
-    //             type: AUTOCOMPLITE_PLACES,
-    //             payload: data
-    // })
+
+export const getAutoCompliteData = (input) => dipatch => { 
     fetch(`${URL}locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${input}`).
         then(res => res.json()).
         then(data => dipatch({
@@ -18,10 +11,6 @@ export const getAutoCompliteData = (input) => dipatch => {
 }
 
 export const getFiveDaysWeatherByLocation = (location) => dipatch => {
-//     dipatch({
-//         type: FIVE_DAYS_FORECAST,
-//         payload: fivedays
-// })
     fetch(`${URL}forecasts/v1/daily/5day/${location}?apikey=${API_KEY}&metric=true`)
         .then(res => res.json())
         .then(data => dipatch({
@@ -31,10 +20,6 @@ export const getFiveDaysWeatherByLocation = (location) => dipatch => {
 };
 
 export const getTodayWeatherByLocation = (location) => dipatch => {
-//     dipatch({
-//         type: NOW_FORCAST,
-//         payload: currentW
-// })
      fetch(`${URL}currentconditions/v1/${location}?apikey=${API_KEY}`)
         .then(res => res.json())
        .then(data => dipatch({
@@ -45,8 +30,7 @@ export const getTodayWeatherByLocation = (location) => dipatch => {
         });
 };
 
-export const addToFavorits = (location) => dipatch => {
-   
+export const addToFavorits = (location) => dipatch => {  
     return (dipatch({
         type: ADD_TO_FAVORITS,
         payload: location

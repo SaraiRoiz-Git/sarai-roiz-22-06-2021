@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useSelector } from 'react-redux';
 import FavoriteForecast from '../FavoriteForecast/FavoriteForecast.js'
 
 function FavoritForecastList() {
@@ -12,6 +12,7 @@ function FavoritForecastList() {
     }
     return "No items on your list"
   }
+
   return (
     <div className="list">
       {createFavoritsCard()}

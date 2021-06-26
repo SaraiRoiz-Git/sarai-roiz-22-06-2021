@@ -1,12 +1,15 @@
-import { ADD_TO_FAVORITS, AUTOCOMPLITE_PLACES, CHANGE_LOCATION, NOW_FORCAST, FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS, ON_REQUEST_FAILED, CLEAR_ERROR } from '../actions/actionTypes';
-import { CITY, COUNTRY, LOCAL_PLAECE, TLV } from '../../constants';
+import {
+  ADD_TO_FAVORITS,
+  AUTOCOMPLITE_PLACES,
+  CHANGE_LOCATION, NOW_FORCAST,
+  FIVE_DAYS_FORECAST, REMOVE_FROM_FAVORITS,
+  ON_REQUEST_FAILED, CLEAR_ERROR
+} from '../actions/actionTypes';
+import { LOCAL_PLAECE } from '../../constants';
 
 const initialState = {
-  // location: TLV,
-  // locationName: CITY,
-  // locationState: COUNTRY,
   favoriteList: [],
-  localPlace:LOCAL_PLAECE
+  localPlace: LOCAL_PLAECE
 };
 
 const weatherData = (state = initialState, action) => {
@@ -57,12 +60,12 @@ const weatherData = (state = initialState, action) => {
         error: true
       };
 
-      case CLEAR_ERROR:
-        console.log('in CLEAR_ERROR')
-        return {
-          ...state,
-          error: false
-        };
+    case CLEAR_ERROR:
+      console.log('in CLEAR_ERROR')
+      return {
+        ...state,
+        error: false
+      };
 
     default:
       return state;

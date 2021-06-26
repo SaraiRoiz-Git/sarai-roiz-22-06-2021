@@ -1,11 +1,12 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import {removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
+import { removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
 import { getIconUrl } from '../../utilities'
 import './FavoriteForecast.css'
 
 function FavoriteForecast(props) {
+
     const dispatch = useDispatch()
     const favorite = props.favorite
     const currForecast = favorite.currForecast;
@@ -21,6 +22,7 @@ function FavoriteForecast(props) {
         dispatch(setDefultLocation(localPlace))
         window.location.href = '#/'
     }
+
     return (
         <div className="favorit-card">
             <Row className="location head-row">
@@ -32,14 +34,11 @@ function FavoriteForecast(props) {
                         <div className="curr-city">
                             {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName}
                         </div>
-                         <img src={getIconUrl(currForecast[0].WeatherIcon)}></img> 
+                        <img src={getIconUrl(currForecast[0].WeatherIcon)}></img>
                         <div className="curr-tpm">
                             {currForecast ? currForecast[0].Temperature.Metric.Value : '--'}°
                             {currForecast ? currForecast[0].Temperature.Metric.Unit : null}
                         </div>
-                    </div>
-                    <div>
-
                     </div>
                 </Col>
                 <Col lg="6" >
@@ -50,6 +49,6 @@ function FavoriteForecast(props) {
             </Row>
         </div>
     )
-
 }
+
 export default FavoriteForecast
