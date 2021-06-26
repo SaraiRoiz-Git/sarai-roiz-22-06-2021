@@ -5,7 +5,6 @@ import fivedays from '../../app/tmp/tmp-5';
 import currentW from '../../app/tmp/curr';
 /*API actions*/
 export const getAutoCompliteData = (input) => dipatch => {
-    console.log('in getAutoCompliteData');
     // dipatch({
     //             type: AUTOCOMPLITE_PLACES,
     //             payload: data
@@ -42,7 +41,6 @@ export const getTodayWeatherByLocation = (location) => dipatch => {
            type: NOW_FORCAST,
            payload: data
         })).catch(error=>{
-            console.log('error');
             dipatch({type: ON_REQUEST_FAILED})
         });
 };
@@ -63,16 +61,13 @@ export const removeItemFromFavorits = (location) => dipatch => {
 }
 
 export const setDefultLocation = (location) => dipatch => {
-    console.log('setDefultLocation', location)
     return (dipatch({
         type: CHANGE_LOCATION,
         payload: location
     }))
 }
 
-export const clearError  =()=>{
-    return function(dispatch){
-        console.log('in clearError')
-        return dispatch({type: CLEAR_ERROR});
-    }
-};
+export const clearError  = () => dispatch =>{
+    console.log('in nclear error')
+        return (dispatch({type: CLEAR_ERROR}));
+}

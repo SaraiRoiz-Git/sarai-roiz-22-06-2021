@@ -2,9 +2,14 @@
 
 .location-favorits{
     display: flex;
+    flex-wrap: wrap;
     background-color: rgba(255,255,255,0.4);;
     padding: 1.5rem;
     border-radius: 0.5rem;
+    margin: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 .head-row{
     align-items: center;
@@ -12,11 +17,6 @@
 .remove-element{
     display: flex;
     align-items: center;
-}
-.location-favorits{
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 400;
 }
 
 .btn-remove{
@@ -27,4 +27,8 @@
     color: white ;
     font-weight: 400;
     padding-left: 1rem;
+}
+
+span{
+    padding-left: 0.5rem;
 }

@@ -11,14 +11,9 @@ function FiveDaysForcast() {
     const fiveDaysForecast = useSelector(state => state.fiveDaysForcast)
 
     useEffect(() => {
-        console.log('in fivedays useeFFEFT')
         let locationKey = localPlace ? localPlace.Key : location;
-        // console.log("location",location)
-        // console.log("localPlace",localPlace)
         dispatch(getFiveDaysWeatherByLocation(locationKey))
     }, []);
-    // console.log("localPlace", fiveDaysForecast)
-    // console.log("fiveDaysForecast", fiveDaysForecast)
 
     const createDalyCard = () => {
         return (fiveDaysForecast ? fiveDaysForecast.DailyForecasts.map(obj => <DailyForecasts data={obj} />) : null)

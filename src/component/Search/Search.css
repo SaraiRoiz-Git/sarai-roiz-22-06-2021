@@ -8,3 +8,7 @@
     width: 100%;
     z-index: 9999;
 }
+
+.form-group{
+    position: relative;
+}

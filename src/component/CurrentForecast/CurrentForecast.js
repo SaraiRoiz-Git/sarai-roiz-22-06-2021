@@ -22,13 +22,8 @@ function CurrentForecast() {
     const currForecast = useSelector(state => state.currForecast);
 
     useEffect(() => {
-       // console.log("localPlace", localPlace)
-        console.log("location", location)
-        console.log("locationName", locationName)
         let locationKey = localPlace ? localPlace.Key : location;
         let localName = localPlace ? localPlace.LocalizedName : locationName;
-        console.log("locationKey", locationKey)
-        console.log("localName", localName)
         dispatch(getAutoCompliteData(locationName));
         //dispatch(setDefultLocation(locationKey));
         dispatch(getTodayWeatherByLocation(locationKey));
@@ -40,9 +35,7 @@ function CurrentForecast() {
         dispatch(addToFavorits({ localPlace: localPlace, currForecast: currForecast }))
     }
     
-    console.log("localPlace", localPlace)
-     console.log('currForecast!!', currForecast)
-    return (
+      return (
         <Row className="location head-row">
             <Col>
                 <div className="location-head">
@@ -55,7 +48,7 @@ function CurrentForecast() {
                     </div>
                     <div className="curr-tpm">
                         {currForecast ? currForecast[0].Temperature.Metric.Value : "--"}°
-                         {currForecast ? currForecast[0].Temperature.Metric.Unit : ""}
+                        {currForecast ? currForecast[0].Temperature.Metric.Unit : ""}
                     </div>
                 </div>
             </Col>
@@ -66,8 +59,6 @@ function CurrentForecast() {
                         </span>
                     </div>
             </Col>
-
-
         </Row>
     )
 

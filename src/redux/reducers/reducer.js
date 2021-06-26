@@ -12,7 +12,6 @@ const initialState = {
 const weatherData = (state = initialState, action) => {
   switch (action.type) {
     case AUTOCOMPLITE_PLACES:
-      console.log('action', action)
       return {
         ...state,
         locationsList: action.payload
@@ -31,22 +30,15 @@ const weatherData = (state = initialState, action) => {
       };
 
     case CHANGE_LOCATION:
-      console.log('in CHANGE_LOCATION')
-      console.log(action.payload)
-
       return {
         ...state,
         localPlace: action.payload
       };
 
     case ADD_TO_FAVORITS:
-      console.log("action", action)
-      console.log("state", state)
       if (!state.favoriteList.find(obj => obj.localPlace.LocalizedName == action.payload.localPlace.LocalizedName)) {
         state.favoriteList.push(action.payload)
       }
-      // console.log("action", action)
-      // console.log("state", state)
       return {
         ...state
       }
@@ -66,6 +58,7 @@ const weatherData = (state = initialState, action) => {
       };
 
       case CLEAR_ERROR:
+        console.log('in CLEAR_ERROR')
         return {
           ...state,
           error: false

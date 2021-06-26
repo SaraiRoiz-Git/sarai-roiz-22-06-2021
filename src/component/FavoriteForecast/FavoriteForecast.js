@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToFavorits, removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
+import {removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
 import { getIconUrl } from '../../utilities'
 import './FavoriteForecast.css'
 
@@ -16,8 +16,6 @@ function FavoriteForecast(props) {
     const removeItem = () => {
         dispatch(removeItemFromFavorits(favorite))
     }
-    console.log("currForecast", currForecast)
-     console.log("localPlace", localPlace)
 
     const goToHomepage = () => {
         dispatch(setDefultLocation(localPlace))
@@ -26,27 +24,27 @@ function FavoriteForecast(props) {
     return (
         <div className="favorit-card">
             <Row className="location head-row">
-                <Col lg="6" sm="10">
+                <Col lg="6" xs="12">
                     <div className="location-favorits" onClick={goToHomepage}>
                         <div className="curr-country">
                             {localPlace ? localPlace.Country.LocalizedName : locationState}/
-                             </div>
-                        <div className="curr-city">
-                            {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName} <b> -  </b> 
                         </div>
-                        {/* <img className="weather-img" src={getIconUrl(currForecast.WeatherIcon)} />*/}
-                        <div className="curr-tpm"> 
+                        <div className="curr-city">
+                            {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName}
+                        </div>
+                         <img src={getIconUrl(currForecast[0].WeatherIcon)}></img> 
+                        <div className="curr-tpm">
                             {currForecast ? currForecast[0].Temperature.Metric.Value : '--'}°
                             {currForecast ? currForecast[0].Temperature.Metric.Unit : null}
                         </div>
                     </div>
                     <div>
-                        
+
                     </div>
                 </Col>
-                <Col >
+                <Col lg="6" >
                     <div className="remove-element">
-                        <button className="btn-remove" onClick={removeItem}><b>-</b></button>
+                        <button className="btn-remove" onClick={removeItem}><b>-</b></button> <span>remove</span>
                     </div>
                 </Col>
             </Row>

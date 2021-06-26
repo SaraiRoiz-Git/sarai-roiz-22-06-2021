@@ -1,31 +1,59 @@
-import React, { Component, useCallback, useState } from 'react'
+import React, { Component, useCallback, useState, useEffect } from 'react'
 import { Form, ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAutoCompliteData, getTodayWeatherByLocation, setDefultLocation, getFiveDaysWeatherByLocation } from '../../redux/actions/action'
-import _ from 'lodash';
 import './Search.css'
 function Search() {
     const dispatch = useDispatch()
     let locationsList = useSelector(state => state.locationsList);
-    let [isShowAutoCompleteOptions, setIsShowAutoCompleteOptions] = useState(false);
+    const [isShowAutoCompleteOptions, setIsShowAutoCompleteOptions] = useState(false);
+    const [searchValue, setSearchValue] = useState(null);
+    const [searchTimeout, setSearchTimeout] = useState(null);
+
+    useEffect(() => {
+        if (searchTimeout) {
+          clearTimeout(searchTimeout);
+        }
+
+        setSearchTimeout(
+          setTimeout(() => {
+            sendToAutoCompleate();
+          }, 1000),
+        );
+
+        return () => clearTimeout(searchTimeout);
+      }, [searchValue]);
+    
 
 
-    const sendToAutoCompleate = (e) => {
-        console.log('in on change');
-        setIsShowAutoCompleteOptions(true);
-        const value = e.target.value;
-        dispatch(getAutoCompliteData(value));
+    const sendToAutoCompleate = () => {
+        console.log('searchValue')
+        console.log(searchValue)
+        if (searchValue) {
+            setIsShowAutoCompleteOptions(true);
+            //const value = e.target.value;
+            dispatch(getAutoCompliteData(searchValue));
+        } else {
+            setIsShowAutoCompleteOptions(false);
+        }
     }
 
-    const autoComplete = useCallback(
-        _.debounce(sendToAutoCompleate, 300, [])
-        , []);
+    const functionOnSearchChange = (e) => {
+        setSearchValue(e.target.value);
 
-    console.log("locationsList", locationsList)
+    }
+
+    const autoComplete = (value) => {
+        sendToAutoCompleate(value);
+    }
+       
+
+    // const autoComplete = useCallback(
+    //     _.debounce(sendToAutoCompleate, 300, []), []);
+
     const changeLocalPlace = (e) => {
-        console.log("objIndex",e.target.name)
-        console.log("obj",locationsList[e.target.name])
         setIsShowAutoCompleteOptions(false);
+        setSearchValue("")
         dispatch(setDefultLocation(locationsList[e.target.name])) ;
         dispatch(getTodayWeatherByLocation(locationsList[e.target.name].Key));
         dispatch(getFiveDaysWeatherByLocation(locationsList[e.target.name].Key));
@@ -35,7 +63,6 @@ function Search() {
     const createList = () => {
         if (locationsList && isShowAutoCompleteOptions) {
             return(locationsList.map((obj, key) => {
-                console.log("obj",obj)
                 return (
                     <ListGroup.Item className="list-group-location"
                         action key={obj.Key} name={key}
@@ -52,7 +79,8 @@ function Search() {
             <Form.Control className="city-search"
                 type="text"
                 placeholder="Search for location"
-                onChange={autoComplete} />
+                value={searchValue}
+                onChange={functionOnSearchChange} />
             <ListGroup className="search-items">
                 {createList()}
             </ListGroup>
