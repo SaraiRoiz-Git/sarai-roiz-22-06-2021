@@ -1,11 +1,9 @@
-
-import React, { Component, useCallback } from 'react'
+import React from 'react'
 import { Container, Modal } from 'react-bootstrap'
 import CurrentForecast from '../../component/CurrentForecast/CurrentForecast'
 import FiveDaysForcast from '../../component/FiveDaysForcast/FiveDaysForcast'
 import Search from '../../component/Search/Search'
 import './Home.css'
-import { toast, ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux'
 import { clearError } from '../../redux/actions/action'
 
