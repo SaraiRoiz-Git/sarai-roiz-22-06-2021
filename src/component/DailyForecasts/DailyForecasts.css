@@ -1,8 +1,9 @@
 .daily-card{
     background-color: rgba(10,34,57,0.4);
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
     border-radius: 0.3rem;
     margin: 0.5rem 2rem 2rem 2rem;
+    width: 140px;
 }
 
 .weather-img{
