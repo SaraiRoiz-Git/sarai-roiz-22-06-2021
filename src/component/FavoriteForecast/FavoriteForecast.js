@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
 import { getIconUrl } from '../../utilities'
 import './FavoriteForecast.css'
