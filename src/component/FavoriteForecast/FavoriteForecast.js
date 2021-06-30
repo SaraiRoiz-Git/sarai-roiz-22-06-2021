@@ -11,8 +11,7 @@ function FavoriteForecast(props) {
     const favorite = props.favorite
     const currForecast = favorite.currForecast;
     const localPlace = favorite.localPlace;
-    const locationName = useSelector(state => state.locationName);
-    const locationState = useSelector(state => state.locationState);
+
 
     const removeItem = () => {
         dispatch(removeItemFromFavorits(favorite))
@@ -29,10 +28,10 @@ function FavoriteForecast(props) {
                 <Col lg="6" xs="12">
                     <div className="location-favorits" onClick={goToHomepage}>
                         <div className="curr-country">
-                            {localPlace ? localPlace.Country.LocalizedName : locationState}/
+                            {localPlace.Country.LocalizedName}/
                         </div>
                         <div className="curr-city">
-                            {localPlace ? localPlace.AdministrativeArea.LocalizedName : locationName}
+                            {localPlace.AdministrativeArea.LocalizedName}
                         </div>
                         <img src={getIconUrl(currForecast[0].WeatherIcon)}></img>
                         <div className="curr-tpm">
