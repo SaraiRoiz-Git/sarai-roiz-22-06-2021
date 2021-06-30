@@ -18,16 +18,19 @@ function CurrentForecast() {
     useEffect(() => {
         if (favoriteList.find((obj) => obj.localPlace.LocalizedName == localPlace.AdministrativeArea.LocalizedName)) {
             setIsInFavorits(true)
+        }else{
+            setIsInFavorits(false)
         }
         let locationKey = localPlace.Key;
         dispatch(getTodayWeatherByLocation(locationKey));
-    }, []);
+    }, [localPlace]);
 
+  
     const addToFavoritsList = () => {
         setIsInFavorits(true)
         dispatch(addToFavorits({ localPlace: localPlace, currForecast: currForecast }))
     }
-    console.log("favoriteList", favoriteList)
+
     return (
         <Row className="location head-row">
             <Col>

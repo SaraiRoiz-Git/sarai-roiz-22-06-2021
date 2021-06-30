@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useState, useEffect } from 'react'
+import React, {useState, useEffect } from 'react'
 import { Form, ListGroup } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAutoCompliteData, getTodayWeatherByLocation, setDefultLocation, getFiveDaysWeatherByLocation } from '../../redux/actions/action'
@@ -27,11 +27,8 @@ function Search() {
     }, [searchValue]);
 
     const sendToAutoCompleate = () => {
-        console.log('searchValue')
-        console.log(searchValue)
         if (searchValue) {
             setIsShowAutoCompleteOptions(true);
-            //const value = e.target.value;
             dispatch(getAutoCompliteData(searchValue));
         } else {
             setIsShowAutoCompleteOptions(false);
@@ -41,10 +38,6 @@ function Search() {
     const functionOnSearchChange = (e) => {
         setSearchValue(e.target.value);
 
-    }
-
-    const autoComplete = (value) => {
-        sendToAutoCompleate(value);
     }
 
     const changeLocalPlace = (e) => {
