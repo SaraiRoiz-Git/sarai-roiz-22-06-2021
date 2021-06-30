@@ -6,8 +6,8 @@ import './DailyForecasts.css'
 function DailyForecasts(props) {
 
     const getDay = (fullDate) => {
-        const date = moment(fullDate).format('dddd');
-        return date
+        const day = moment(fullDate).format('dddd');
+        return day
     }
 
     const getDate = (fullDate) => {
