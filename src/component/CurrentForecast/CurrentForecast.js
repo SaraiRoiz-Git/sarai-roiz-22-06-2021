@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import './CurrentForecast.css'
 import {
-    addToFavorits,
+    addToFavorites,
     getTodayWeatherByLocation,
 } from "../../redux/actions/action";
 
@@ -13,22 +13,22 @@ function CurrentForecast() {
     const localPlace = useSelector(state => state.localPlace);
     const currForecast = useSelector(state => state.currForecast);
     const favoriteList = useSelector(state => state.favoriteList);
-    const [isInFavorits, setIsInFavorits] = useState(false);
+    const [isInFavorites, setIsInFavorites] = useState(false);
 
     useEffect(() => {
         if (favoriteList.find((obj) => obj.localPlace.LocalizedName == localPlace.AdministrativeArea.LocalizedName)) {
-            setIsInFavorits(true)
-        }else{
-            setIsInFavorits(false)
+            setIsInFavorites(true)
+        } else {
+            setIsInFavorites(false)
         }
         let locationKey = localPlace.Key;
         dispatch(getTodayWeatherByLocation(locationKey));
     }, [localPlace]);
 
-  
-    const addToFavoritsList = () => {
-        setIsInFavorits(true)
-        dispatch(addToFavorits({ localPlace: localPlace, currForecast: currForecast }))
+
+    const addToFavoritesList = () => {
+        setIsInFavorites(true)
+        dispatch(addToFavorites({ localPlace: localPlace, currForecast: currForecast }))
     }
 
     return (
@@ -48,11 +48,11 @@ function CurrentForecast() {
                 </div>
             </Col>
 
-            <Col className="add-to-favorits" lg="6" sm="12">
+            <Col className="add-to-favorites" lg="6" sm="12">
                 <div>
-                    <button disabled={isInFavorits} onClick={addToFavoritsList}>🤍</button>
+                    <button disabled={isInFavorites} onClick={addToFavoritesList}>🤍</button>
                     <span className="btn-task">
-                        {isInFavorits ? "Added to favorits" : "Add to favorits"}
+                        {isInFavorites ? "Added to favorites" : "Add to favorites"}
                     </span>
                 </div>
             </Col>

@@ -4,7 +4,7 @@ import FavoriteForecast from '../FavoriteForecast/FavoriteForecast.js'
 
 function FavoritForecastList() {
   const favoriteList = useSelector(state => state.favoriteList);
-  const createFavoritsCard = () => {
+  const createFavoritesCard = () => {
     if (favoriteList.length > 0) {
       return favoriteList.map((location) => {
         return <FavoriteForecast favorite={location} />
@@ -15,7 +15,7 @@ function FavoritForecastList() {
 
   return (
     <div className="list">
-      {createFavoritsCard()}
+      {createFavoritesCard()}
     </div>
   )
 }

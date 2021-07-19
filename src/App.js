@@ -4,7 +4,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
 import AppNavbar from './component/AppNavbar/AppNavbar';
 import Home from './pages/Home/Home';
-import Favorits from './pages/Favorits/Favorits';
+import Favorites from './pages/Favorites/Favorites.js';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path={'/favorites'}>
-          <Favorits/>
+          <Favorites />
         </Route>
       </HashRouter>
     </div>

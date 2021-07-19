@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { removeItemFromFavorits, setDefultLocation } from '../../redux/actions/action'
+import { removeItemFromFavorites, setDefultLocation } from '../../redux/actions/action'
 import { getIconUrl } from '../../utilities'
 import './FavoriteForecast.css'
 
@@ -14,7 +14,7 @@ function FavoriteForecast(props) {
 
 
     const removeItem = () => {
-        dispatch(removeItemFromFavorits(favorite))
+        dispatch(removeItemFromFavorites(favorite))
     }
 
     const goToHomepage = () => {
@@ -26,7 +26,7 @@ function FavoriteForecast(props) {
         <div className="favorit-card">
             <Row className="location head-row">
                 <Col lg="6" xs="12">
-                    <div className="location-favorits" onClick={goToHomepage}>
+                    <div className="location-favorites" onClick={goToHomepage}>
                         <div className="curr-country">
                             {localPlace.Country.LocalizedName}/
                         </div>
